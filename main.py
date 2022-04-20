@@ -8,7 +8,6 @@ from app.views.genres import genres_ns
 from app.views.movies import movies_ns
 
 
-
 def create_app():
     """функция создания основного объекта application"""
     application = Flask(__name__)
@@ -41,6 +40,7 @@ def register_extensions(application: Flask):
 #
 
 if __name__ == '__main__':
-    app_ = create_app()
+    app_config = Config()
+    app_ = create_app(app_config)
     register_extensions(app_)
     app_.run()
