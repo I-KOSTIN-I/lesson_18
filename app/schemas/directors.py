@@ -2,5 +2,5 @@ from marshmallow import Schema, fields
 
 
 class DirectorSchema(Schema):
-    id = fields.Int(dump_only=True)
+    id = fields.Int()
     name = fields.Str()

@@ -6,15 +6,13 @@ from app.schemas.genres import GenreSchema
 
 genres_ns = Namespace('genres')
 
-genre_schema = GenreSchema()
-
 
 @genres_ns.route('/')
 class GenreView(Resource):
     def get(self):
         genres = db.session.query(models.Genre).all()
 
-        return genre_schema.dump(genres), 200
+        return GenreSchema(many=True).dump(genres), 200
 
 
 @genres_ns.route('/<int:genre_id>')
@@ -25,4 +23,4 @@ class GenreView(Resource):
         if genre is None:
             return {}, 404
 
-        return genre_schema.dump(genre), 200
+        return GenreSchema().dump(genre), 200
